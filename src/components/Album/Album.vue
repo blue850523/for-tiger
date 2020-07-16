@@ -48,7 +48,7 @@ export default {
   },
   watch: {
   },
-  components: {
+  computed: {
   },
   methods: {
     closeBtnClick () {

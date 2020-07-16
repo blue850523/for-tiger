@@ -21,7 +21,7 @@
     </div>
     <!-- content -->
     <div class="content">
-      content
+      contest
     </div>
   </div>
 </template>
@@ -37,34 +37,34 @@ export default {
   created () {
   },
   mounted () {
-    let oldTop = 0; //旧数据，初始为0
+    let oldTop = 0; // 旧数据，初始为0
     // 将自定义方法绑定到窗口滚动条事件
     window.onscroll = () => {
-      let top = document.scrollingElement.scrollTop; //触发滚动条，记录数值
-      //旧数据大于当前位置，表示滚动条top向上滚动
+      let top = document.scrollingElement.scrollTop; // 触发滚动条，记录数值
+      // 旧数据大于当前位置，表示滚动条top向上滚动
       if (oldTop > top) {
         this.show = true;
         console.log("↑");
       } else {
-        //相反...
+        // 相反...
         this.show = false;
         console.log("↓");
       }
       console.log(top);
-      oldTop = top;//更新旧的位置
+      oldTop = top;// 更新旧的位置
     };
   },
   beforeDestroy () {
   },
   watch: {
   },
-  components: {
+  computed: {
   },
   methods: {
     closeBtnClick () {
       this.$router.push("/");
       this.$emit("zoomEvent", false);
-    },
+    }
     // zoomBtnClick () {
     //   this.isZoom = !this.isZoom;
     //   this.$emit("zoomEvent", this.isZoom);

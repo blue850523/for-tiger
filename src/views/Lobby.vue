@@ -35,7 +35,9 @@
         </div>
       </div>
       <div class="FileBoard">
-        <router-view @zoomEvent="fileBoardZoomCSS(...arguments)"/>
+        <transition name="FileBoardFade" mode="out-in">
+          <router-view @zoomEvent="fileBoardZoomCSS(...arguments)"/>
+        </transition>
       </div>
     </div>
     <!-- footer -->
@@ -262,6 +264,7 @@ export default {
   // transition
   .logoMenuFade-enter {
     opacity: 0;
+    transform: translateY(-10px);
   }
   .logoMenuFade-enter-active,
   .logoMenuFade-leave-active {
@@ -269,6 +272,20 @@ export default {
   }
   .logoMenuFade-leave-to {
     opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  .FileBoardFade-enter {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  .FileBoardFade-enter-active,
+  .FileBoardFade-leave-active {
+    transition: all .5s;
+  }
+  .FileBoardFade-leave-to {
+    opacity: 0;
+    transform: translateX(-10px);
   }
 }
 @media only screen and (max-width: 768px) {
@@ -282,7 +299,7 @@ export default {
     }
     .center {
       flex-direction: column;
-      height: calc(100% - 20px);
+      height: calc(100% - 40px);
       .FileMenu {
         flex-direction: row;
         justify-content: flex-start;

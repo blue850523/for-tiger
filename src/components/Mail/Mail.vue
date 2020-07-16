@@ -20,13 +20,14 @@
     </div>
     <!-- content -->
     <div class="content">
+      <!-- <div class="mailList" v-show="clientWidth > 768 ? true : !isOpenMobileMail"> -->
       <div class="mailList">
         <div
           class="mail"
           v-for="(it,index) in mailData"
-          :class="index === selectMail ? 'mailSelect' : ''"
+          :class="index === selectMail ? clientWidth > 768 ? 'mailSelect' : '' : ''"
           :key="index"
-          @click="selectMail = index"
+          @click="mailClick(index)"
         >
           <div class="mailTop">
             <div class="sender">{{it.sender}}</div>
@@ -36,18 +37,48 @@
           <div class="mailContent">{{it.mailContent}}</div>
         </div>
       </div>
+      <!-- width > 768px -->
       <div class="mailView">
         <!-- {{mailData[selectMail].mailContent}} -->
         <div class="Top">
           <div class="mailViewTop">
             <div class="mailViewSender">{{mailData[selectMail].sender}}</div>
             <div class="mailViewDate">{{mailData[selectMail].time}}</div>
+            <div class="mailSenderIcon">{{senderIcon(mailData[selectMail].sender)}}</div>
           </div>
           <div class="mailViewTitle">{{mailData[selectMail].mailTitle}}</div>
           <div class="mailViewAddressee"><span class="addresseeTitle">收件人：</span>{{mailData[selectMail].addressee}}</div>
         </div>
         <div class="Bottom">{{mailData[selectMail].mailContent}}</div>
       </div>
+      <!-- width < 768px -->
+      <transition name="mailViewMFade">
+        <div class="mailViewM" v-if="isOpenMobileMail">
+          <div class="mailViewMTop">
+            <div class="btnBack" @click="isOpenMobileMail = false">
+              <span class="svg-container svg-back">
+                <svg-icon icon-class="back" />
+              </span>
+            </div>
+            <div class="mailViewMTopContainer">
+              <div class="Right">
+                {{senderIcon(mailData[selectMail].sender)}}
+              </div>
+              <div class="Left">
+                <span class="mailViewMSender">{{mailData[selectMail].sender}}</span>
+                <span class="mailViewDate">{{mailData[selectMail].date}}</span>
+                <div class="mailViewMAddressee"><span class="addresseeTitle">收件人：</span>{{mailData[selectMail].addressee}}</div>
+              </div>
+            </div>
+            <div class="mailViewMTitle">
+              {{mailData[selectMail].mailTitle}}
+            </div>
+          </div>
+          <div class="mailViewMBottom">
+            <div class="content">{{mailData[selectMail].mailContent}}</div>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -74,7 +105,8 @@ export default {
           mailTitle: "小天使你還好嗎",
           mailContent: "從你離開到現在已經過了四個月，你在那邊過得還好嗎？你走的前一天我們圍著你相處的畫面還歷歷在目，我想我們大家都不會輕易忘了你有多麼可愛又可恨。\n很抱歉我們的無能為力沒辦法拯救年幼的你，只能透過這種方式讓你不再疼痛，希望你不要忘了回來看看我們，讓我們知道你過得很好，謝謝你帶給我們大家的歡樂時光。"
         }
-      ]
+      ],
+      isOpenMobileMail: false
     }
   },
   created () {
@@ -84,11 +116,25 @@ export default {
   },
   watch: {
   },
-  components: {
+  computed: {
+    clientWidth () {
+      return this.$store.state.clientWidth;
+    }
   },
   methods: {
     closeBtnClick () {
       this.$router.push("/");
+    },
+    mailClick (index) {
+      this.selectMail = index;
+      if (this.clientWidth < 768)
+        this.isOpenMobileMail = true;
+      else
+        this.isOpenMobileMail = false;
+    },
+    senderIcon (name) {
+      let textArr = name.split('');
+      return textArr[0]
     },
     callAPI () { // json-server db.json
       this.$axios
@@ -156,6 +202,7 @@ export default {
   .content {
     height: calc(100% - 41px);
     display: flex;
+    position: relative;
     .mailList {
       width: 300px;
       overflow: auto;
@@ -202,14 +249,30 @@ export default {
         text-align: left;
         padding: 5px 20px;
         line-height: 2;
-        // color: white;
-        // background: #7dc8e1;
         border-bottom: 1px solid #7dc8e1;
         .mailViewTop {
           display: flex;
           justify-content: space-between;
+          position: relative;
           .mailViewSender {
             font-weight: 600;
+          }
+          .mailViewDate {
+            position: relative;
+            right: 60px;
+          }
+          .mailSenderIcon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: 0;
+            border-radius: 50%;
+            background: #7dc8e1;
+            color: white;
+            width: 40px;
+            height: 40px;
+            text-align: center;
           }
         }
         .mailViewTitle {
@@ -230,6 +293,22 @@ export default {
         text-align: left;
       }
     }
+    .mailViewM {
+      display: none;
+    }
+  }
+  // transition
+  .mailViewMFade-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .mailViewMFade-enter-active,
+  .mailViewMFade-leave-active {
+    transition: all .5s;
+  }
+  .mailViewMFade-leave-to {
+    opacity: 0;
+    transform: translateX(-100%);
   }
 }
 @media only screen and (max-width: 768px) {
@@ -240,6 +319,83 @@ export default {
       .left {
         .svg-container {
           color: white !important;
+        }
+      }
+    }
+    .content {
+      overflow: auto;
+      .mailList {
+        width: 100%;
+        border: none;
+      }
+      .mailView {
+        display: none;
+      }
+      .mailViewM {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: white;
+        .mailViewMTop {
+          width: 100%;
+          border-bottom: 1px solid #7dc8e1;
+          box-sizing: border-box;
+          padding: 5px 0 5px 40px;
+          position: relative;
+          text-align: left;
+          .btnBack {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+          .mailViewMTopContainer {
+            border-bottom: 1px solid #7dc8e1;
+            display: flex;
+            .Right {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              background: #7dc8e1;
+              color: white;
+              width: 40px;
+              height: 40px;
+              text-align: center;
+              margin-right: 10px;
+            }
+            .mailViewMSender {
+              font-weight: 600;
+            }
+            .mailViewDate {
+              position: absolute;
+              right: 20px;
+            }
+            .mailViewMAddressee {
+              padding-bottom: 10px;
+              .addresseeTitle {
+                font-weight: 600;
+              }
+            }
+          }
+          .mailViewMTitle {
+            padding: 5px 20px 0 0;
+            font-size: 20px;
+            font-weight: 600;
+          }
+        }
+        .mailViewMBottom {
+          width: 100%;
+          line-height: 2;
+          padding: 20px;
+          box-sizing: border-box;
+          white-space: pre-wrap;
+          text-align: left;
         }
       }
     }

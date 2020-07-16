@@ -6,6 +6,35 @@
   </div>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+    }
+  },
+  created () {
+    this.getClientWidth();
+    window.onresize = () => {
+      this.getClientWidth();
+    }
+  },
+  mounted () {
+  },
+  beforeDestroy () {
+  },
+  watch: {
+  },
+  computed: {
+  },
+  methods: {
+    getClientWidth () {
+      let clientWidth = document.documentElement.clientWidth;
+      this.$store.commit("SET_CLIENT_WIDTH", clientWidth);
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
