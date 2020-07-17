@@ -228,11 +228,9 @@ export default {
     .FileMenu {
       display: flex;
       flex-direction: column;
-      flex-wrap: wrap;
       width: 100px;
     }
     .FileBoard {
-      // background: #7dc8e16d;
       height: calc(100% - 95px);
       width: calc(100% - 100px);
       padding:10px 10px 10px 0;
@@ -304,6 +302,9 @@ export default {
         flex-direction: row;
         justify-content: flex-start;
         width: 100%;
+        .FileBox {
+          flex: 1;
+        }
       }
       .FileBoard {
         width: 100%;

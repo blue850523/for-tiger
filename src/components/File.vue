@@ -41,17 +41,17 @@ export default {
 <style lang="scss" scoped>
 #File {
   .File {
-    width: 70px;
+    width: 75px;
     // height: 80px;
     display: inline-block;
     box-sizing: border-box;
     margin: 10px;
-    padding: 5px;
     border-radius: 5px;
     -webkit-user-select:none;
     -moz-user-select:none;
     -o-user-select:none;
     user-select:none;
+    // box-sizing: border-box;
     .svg-container {
       width: 100%;
       display: flex;
@@ -72,12 +72,14 @@ export default {
       transition: all .5s;
     }
   }
-  .File:hover {
-    .svg-container {
-      background: #7dc8e16d;
-    }
-    .FileName {
-      background: #7dc8e16d;
+  @media (hover: hover) {
+    .File:hover {
+      .svg-container {
+        background: #7dc8e16d;
+      }
+      .FileName {
+        background: #7dc8e16d;
+      }
     }
   }
 }

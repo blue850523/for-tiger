@@ -228,9 +228,14 @@ export default {
         }
         .mailContent {
           text-align: left;
-          height: 45px;
           width: 100%;
-          overflow: hidden;
+          overflow:hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          white-space: normal;
         }
       }
       .mail:hover {

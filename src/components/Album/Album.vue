@@ -24,7 +24,7 @@
         <!-- <li class="picture" v-for="(it,index) in 4" :key="index">
           <img :src="require(`@/assets/tiger/tiger${index+1}.jpg`)" class="index-img">
         </li> -->
-        <viewer :images="imagesNum">
+        <viewer :images="imagesNum" class="viewer">
         <!-- imagesNum 一定要一個陣列，不然會報錯 -->
           <li class="picture" v-for="(it,index) in imagesNum" :key="it">
             <img :src="require(`@/assets/tiger/tiger${index+1}.jpg`)">
@@ -147,6 +147,21 @@ export default {
       .left {
         .svg-container {
           color: white !important;
+        }
+      }
+    }
+    .content {
+      .pictureList {
+        .viewer {
+          display: flex;
+          flex-flow: row wrap;
+          align-content: flex-start;
+          .picture {
+            margin: 5px;
+            width: 33%;
+            height: calc(33vw - 10px);
+            flex: 0 0 calc(33% - 10px);
+          }
         }
       }
     }
