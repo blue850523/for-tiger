@@ -13,6 +13,19 @@
 }
 .viewer-toolbar > ul > li {
   background-color: #7dc8e17c !important;
+  height: 40px !important;
+  width: 40px !important;
+  position: relative !important;
+}
+.viewer-toolbar > ul > li::before {
+  margin: 0 !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) scale(1.5) !important;
+}
+.viewer-toolbar > ul > .viewer-large {
+  margin: 0 !important;
 }
 .viewer-toolbar > ul > li:hover {
   background-color: #7dc8e1 !important;

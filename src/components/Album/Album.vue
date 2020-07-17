@@ -8,11 +8,11 @@
             <svg-icon icon-class="close" />
           </span>
         </div>
-        <div class="btnZoom btn">
+        <!-- <div class="btnZoom btn">
           <span class="svg-container svg-zoom">
             <svg-icon icon-class="zoom" />
           </span>
-        </div>
+        </div> -->
       </div>
       <div class="titleName">
         Album
@@ -21,15 +21,19 @@
     <!-- content -->
     <div class="content">
       <div class="pictureList">
-        <!-- <li class="picture" v-for="(it,index) in 4" :key="index">
-          <img :src="require(`@/assets/tiger/tiger${index+1}.jpg`)" class="index-img">
-        </li> -->
+        <span class="pictureTitle">小虎個人沙龍照</span>
         <viewer :images="imagesNum" class="viewer">
         <!-- imagesNum 一定要一個陣列，不然會報錯 -->
           <li class="picture" v-for="(it,index) in imagesNum" :key="it">
             <img :src="require(`@/assets/tiger/tiger${index+1}.jpg`)">
           </li>
         </viewer>
+        <!-- <span class="pictureTitle">小虎個人沙龍照</span>
+        <viewer :images="imagesNum" class="viewer">
+          <li class="picture" v-for="(it,index) in imagesNum" :key="it">
+            <img :src="require(`@/assets/tiger/tiger${index+1}.jpg`)">
+          </li>
+        </viewer> -->
       </div>
     </div>
   </div>
@@ -39,7 +43,7 @@
 export default {
   data () {
     return {
-      imagesNum: Array(4).fill()
+      imagesNum: Array(25).fill()
     }
   },
   created () {
@@ -71,13 +75,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     .left {
-      width: 60px;
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       padding: 0 5px;
+      position: absolute;
+      left: 10px;
       .btn {
         border-radius: 50%;
         width: 20px;
@@ -113,10 +118,17 @@ export default {
       height: 100%;
       padding: 10px;
       box-sizing: border-box;
-      // text-align: left;
+      text-align: left;
       overflow: auto;
-      // display: flex;
-      // flex-wrap: wrap;
+      .pictureTitle {
+        color: #7dc8e1;
+        padding-bottom: 10px;
+        margin: 0 0 10px 5px;
+        display: inline-block;
+        box-sizing: border-box;
+        border-bottom: 1px solid #7dc8e1;
+        width: 100%;
+      }
       .picture {
         width: 100px;
         height: 100px;

@@ -5,8 +5,8 @@ function resolve (dir) {
 
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/my-project/'
-    : '/'
+    ? '/for-tiger/'
+    : './'
 }
 
 module.exports = {

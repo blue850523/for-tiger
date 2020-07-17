@@ -9,11 +9,11 @@
           </span>
         </div>
         <!-- <div class="btnZoom btn" @click="zoomBtnClick"> -->
-        <div class="btnZoom btn">
+        <!-- <div class="btnZoom btn">
           <span class="svg-container svg-zoom">
             <svg-icon icon-class="zoom" />
           </span>
-        </div>
+        </div> -->
       </div>
       <div class="titleName">
         Grow up
@@ -86,13 +86,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     .left {
-      width: 60px;
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       padding: 0 5px;
+      position: absolute;
+      left: 10px;
       .btn {
         border-radius: 50%;
         width: 20px;

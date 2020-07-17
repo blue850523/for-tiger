@@ -8,11 +8,11 @@
             <svg-icon icon-class="close" />
           </span>
         </div>
-        <div class="btnZoom btn">
+        <!-- <div class="btnZoom btn">
           <span class="svg-container svg-zoom">
             <svg-icon icon-class="zoom" />
           </span>
-        </div>
+        </div> -->
       </div>
       <div class="titleName">
         Mail
@@ -102,8 +102,8 @@ export default {
           addressee: "小虎",
           date: "2020/7/14",
           time: "2020年7月14日 下午 5:20",
-          mailTitle: "小天使你還好嗎",
-          mailContent: "從你離開到現在已經過了四個月，你在那邊過得還好嗎？你走的前一天我們圍著你相處的畫面還歷歷在目，我想我們大家都不會輕易忘了你有多麼可愛又可恨。\n很抱歉我們的無能為力沒辦法拯救年幼的你，只能透過這種方式讓你不再疼痛，希望你不要忘了回來看看我們，讓我們知道你過得很好，謝謝你帶給我們大家的歡樂時光。"
+          mailTitle: "小虎你嘴巴超臭＝＝",
+          mailContent: "你嘴巴真的超臭＝＝\n從你離開到現在已經過了四個月，你在那邊過得還好嗎？你走的前一天我們圍著你相處的畫面還歷歷在目，我想我們大家都不會輕易忘了你有多麼可愛又可恨。\n很抱歉我們的無能為力沒辦法拯救年幼的你，只能透過這種方式讓你不再疼痛，希望你不要忘了回來看看我們，讓我們知道你過得很好，謝謝你帶給我們大家的歡樂時光。"
         }
       ],
       isOpenMobileMail: false
@@ -165,13 +165,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     .left {
-      width: 60px;
-      height: 30px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       padding: 0 5px;
+      position: absolute;
+      left: 10px;
       .btn {
         border-radius: 50%;
         width: 20px;
