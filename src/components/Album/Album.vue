@@ -48,6 +48,8 @@ export default {
   },
   created () {
   },
+  mounted () {
+  },
   beforeDestroy () {
   },
   watch: {

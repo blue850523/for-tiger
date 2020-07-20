@@ -11,6 +11,7 @@ import axios from 'axios';
 import api from '@/apis/APIConfig.js'
 import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
+// import Loading from '@/components/Loading/index.js'
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$api = api;

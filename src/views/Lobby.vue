@@ -10,7 +10,8 @@
           class="logoMenu"
           v-if="isOpenLogoMenu"
         >
-          <div class="logoItem" v-for="(it, index) in logoItem" :key="it">{{logoItem[index]}}</div>
+          <div class="logoItem" @click="infoClick()">關於小虎</div>
+          <div class="logoItem" @click="sleepClicked()">睡眠</div>
         </div>
       </transition>
       <div class="right">
@@ -72,7 +73,6 @@ export default {
       nowDay: '',
       nowTime: '',
       IntervalEvent: null,
-      logoItem: ['關於小虎', '睡眠'],
       isOpenLogoMenu: false,
       fileData: [
         {
@@ -142,6 +142,15 @@ export default {
     fileBoardZoomCSS (isZoom) {
       this.isfileBoardZoom = isZoom;
       return this.isfileBoardZoom;
+    },
+    infoClick () {
+      this.isOpenLogoMenu = false;
+    },
+    sleepClicked () {
+      this.isOpenLogoMenu = false;
+      this.$store.commit("SET_LOADING", true);
+      this.$store.commit("SET_LOADING_TEXT", "Sleeping...");
+      this.$store.commit("SET_SLEEP_MODE", true);
     }
   }
 }
@@ -175,7 +184,6 @@ export default {
       border-right: 1px solid #7dc8e1;
       border-bottom: 1px solid #7dc8e1;
       color: #7dc8e1;
-      height: 50px;
       width: 180px;
       position: absolute;
       top: 40px;

@@ -1,11 +1,20 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view @sleepMode="sleepMode"/>
+    <loading
+      :show="$store.state.loading"
+      :text="$store.state.loadingText"
+      :sleepMode="$store.state.sleepMode"
+    />
   </div>
 </template>
 
 <script>
+import loading from '@/components/Loading/Loading.vue';
 export default {
+  components: {
+    loading
+  },
   data () {
     return {
     }
