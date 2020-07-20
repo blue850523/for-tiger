@@ -40,6 +40,9 @@
           <router-view @zoomEvent="fileBoardZoomCSS(...arguments)"/>
         </transition>
       </div>
+      <div class="infoBlock">
+        test
+      </div>
     </div>
     <!-- footer -->
     <div class="footer">
@@ -242,6 +245,13 @@ export default {
       height: calc(100% - 95px);
       width: calc(100% - 100px);
       padding:10px 10px 10px 0;
+    }
+    .infoBlock {
+      background: red;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   .footer {
