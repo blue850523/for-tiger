@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view @sleepMode="sleepMode"/>
+    <router-view/>
     <loading
       :show="$store.state.loading"
       :text="$store.state.loadingText"

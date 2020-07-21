@@ -40,9 +40,41 @@
           <router-view @zoomEvent="fileBoardZoomCSS(...arguments)"/>
         </transition>
       </div>
-      <div class="infoBlock">
-        test
-      </div>
+      <transition name="FileBoardFade" mode="out-in">
+        <div class="infoBlock" v-if="infoBlockOpened">
+          <div class="title">
+            <div class="left">
+              <div class="btnClose btn" @click="infoBtnClose()">
+                <span class="svg-container svg-close">
+                  <svg-icon icon-class="close" />
+                </span>
+              </div>
+            </div>
+            <div class="titleName">
+              關於小虎
+            </div>
+          </div>
+          <div class="content">
+            <div class="infoTop">
+              <div class="infoHead">
+                <img src="@/assets/tigerHead.png" class="headPic">
+              </div>
+              <div class="infoText">
+                <h1>小虎</h1>
+                <br>
+                <h4>2016/10/01～2020/03/05</h4>
+                <h4>飼主 Amanda Li</h4>
+                <h4>原居住地 柏昕通訊</h4>
+                <h4>聯絡地址 新北市蘆洲區永樂街36號</h4>
+                <h4>聯絡電話 +886 8286 7968</h4>
+              </div>
+            </div>
+            <span class="infoFooter">
+              © Copyright 2020 by J.Young
+            </span>
+          </div>
+        </div>
+      </transition>
     </div>
     <!-- footer -->
     <div class="footer">
@@ -97,7 +129,8 @@ export default {
           isOpened: false
         }
       ],
-      isfileBoardZoom: false
+      isfileBoardZoom: false,
+      infoBlockOpened: true
     }
   },
   created () {
@@ -148,6 +181,10 @@ export default {
     },
     infoClick () {
       this.isOpenLogoMenu = false;
+      this.infoBlockOpened = true;
+    },
+    infoBtnClose () {
+      this.infoBlockOpened = false;
     },
     sleepClicked () {
       this.isOpenLogoMenu = false;
@@ -247,11 +284,91 @@ export default {
       padding:10px 10px 10px 0;
     }
     .infoBlock {
-      background: red;
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -70%);
+      height: 400px;
+      width: 700px;
+      border: 1px solid #7dc8e1;
+      background: white;
+      .title {
+        width: 100%;
+        height: 40px;
+        position: relative;
+        border-bottom: 1px solid #7dc8e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .left {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 0 5px;
+          position: absolute;
+          left: 10px;
+          .btn {
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background: #7dc8e1;
+            margin: 0 5px;
+            .svg-container {
+              color: #7dc8e1;
+            }
+          }
+        }
+        .left:hover {
+          .btn{
+            .svg-container{
+              color: white;
+            }
+          }
+        }
+        .titleName{
+          width: calc(100% - 80px);
+          color: #7dc8e1;
+          -webkit-user-select:none;
+          -moz-user-select:none;
+          -o-user-select:none;
+          user-select:none;
+        }
+      }
+      .content {
+        width: 100%;
+        height: calc(100% - 41px);
+        color: #7dc8e1;
+        .infoTop {
+          width: 100%;
+          height: calc(100% - 30px);
+          display: flex;
+          .infoHead {
+            width: 40%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .headPic {
+              height: 60%;
+            }
+          }
+          .infoText {
+            width: 60%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 50px 20px 20px 50px;
+            text-align: left;
+            line-height: 1.5;
+            font-weight: 100;
+          }
+        }
+        .infoFooter {
+          display: inline-block;
+          width: 100%;
+          height: 20px;
+          margin-bottom: 10px;
+        }
+      }
     }
   }
   .footer {
@@ -328,6 +445,40 @@ export default {
         width: 100%;
         height: calc(100% - 180px);
         padding: 0;
+      }
+      .infoBlock {
+        height: 70%;
+        width: 100%;
+        transform: translate(-50%, -40%);
+        .title {
+          .left {
+            .svg-container {
+              color: white !important;
+            }
+          }
+        }
+        .content {
+          overflow: auto;
+          .infoTop {
+            flex-direction: column;
+            align-items: center;
+            height: auto;
+            .infoHead {
+              height: 50%;
+              width: 80%;
+              margin-top: 20px;
+              .headPic {
+                max-height: 200px;
+                max-width: 200px;
+                height: auto;
+              }
+            }
+            .infoText {
+              width: 80%;
+              padding: 20px;
+            }
+          }
+        }
       }
     }
     .footer {

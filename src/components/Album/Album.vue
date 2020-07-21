@@ -72,7 +72,6 @@ export default {
   .title {
     width: 100%;
     height: 40px;
-    position: relative;
     border-bottom: 1px solid #7dc8e1;
     display: flex;
     align-items: center;
