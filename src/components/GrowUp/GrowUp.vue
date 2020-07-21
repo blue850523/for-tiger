@@ -26,14 +26,14 @@
           <img class="img1" src="@/assets/tiger/tiger5.jpg">
         </div>
         <div class="text">
-          <h2>小浪貓</h2>
+          <h2>前期 - 小浪貓</h2>
           <p>Amanda在嘉義玩的時候遇到四隻生病的小浪貓，小虎就是其中一隻，把他們醫治後暫時住在朋友的店內，本來要送出去給別人養，但找不到新主人，於是有愛心的Amanda就自己帶回家養了。</p>
         </div>
       </div>
 
       <div class="container">
         <div class="text">
-          <h2>店貓</h2>
+          <h2>中期 - 店貓</h2>
           <p>Amanda的通訊行似乎出現老鼠了，於是Amanda把小虎接到柏昕通訊裡面嚇老鼠，剛開始小虎非常不習慣一直喵喵叫，好像還怕老鼠，最後小虎習慣了在這裏的生活於是就住在通訊行了。</p>
         </div>
         <div class="pic">
@@ -144,7 +144,8 @@ export default {
     .container {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      max-width: 1280px;
+      margin: 0 auto 20px;
       .pic {
         height: 350px;
         width: 55%;

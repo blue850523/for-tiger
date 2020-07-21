@@ -134,7 +134,7 @@ export default {
         }
       ],
       isfileBoardZoom: false,
-      infoBlockOpened: true
+      infoBlockOpened: false
     }
   },
   created () {
