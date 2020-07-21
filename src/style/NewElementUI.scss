@@ -8,3 +8,18 @@
   background: #7dc8e1 !important;
   font-size: 14px;
 }
+.el-message {
+  background-color: white;
+}
+.el-message .el-icon-info {
+  color: #7dc8e1;
+}
+.el-message--info .el-message__content {
+  color: #7dc8e1;
+}
+.el-message__closeBtn {
+  color: #7dc8e1;
+}
+.el-message__closeBtn:hover {
+  color: #7dc8e1;
+}

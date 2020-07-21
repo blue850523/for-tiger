@@ -79,19 +79,23 @@
     <!-- footer -->
     <div class="footer">
       <el-tooltip class="tooltip" effect="dark" content="Facebook" placement="top" popper-class="Newtooltip">
-        <span class="svg-container svg-facebook">
-          <svg-icon icon-class="facebook" />
-        </span>
+        <a href="https://www.facebook.com/%E6%9F%8F%E6%98%95%E9%80%9A%E8%A8%8A-228046527759441/">
+          <span class="svg-container svg-facebook">
+            <svg-icon icon-class="facebook" />
+          </span>
+        </a>
       </el-tooltip>
       <el-tooltip class="tooltip" effect="dark" content="Line" placement="top" popper-class="Newtooltip">
-        <span class="svg-container svg-line">
+        <span class="svg-container svg-line" @click="showMessage()">
           <svg-icon icon-class="line" />
         </span>
       </el-tooltip>
       <el-tooltip class="tooltip" effect="dark" content="Instagram" placement="top" popper-class="Newtooltip">
-        <span class="svg-container svg-instagram">
-          <svg-icon icon-class="instagram" />
-        </span>
+        <a href="https://www.instagram.com/blue850523/">
+          <span class="svg-container svg-instagram">
+              <svg-icon icon-class="instagram" />
+          </span>
+        </a>
       </el-tooltip>
     </div>
   </div>
@@ -191,6 +195,13 @@ export default {
       this.$store.commit("SET_LOADING", true);
       this.$store.commit("SET_LOADING_TEXT", "Sleeping...");
       this.$store.commit("SET_SLEEP_MODE", true);
+    },
+    showMessage () {
+      this.$message({
+        showClose: true,
+        duration: 50000,
+        message: "這裡沒有東西唷"
+      })
     }
   }
 }
@@ -292,6 +303,7 @@ export default {
       width: 700px;
       border: 1px solid #7dc8e1;
       background: white;
+      z-index: 999;
       .title {
         width: 100%;
         height: 40px;
@@ -387,6 +399,9 @@ export default {
     z-index: 999;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    a {
+      cursor: default;
+    }
     .svg-container{
       width: 60px;
       height: 60px;

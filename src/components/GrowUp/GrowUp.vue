@@ -21,7 +21,25 @@
     </div>
     <!-- content -->
     <div class="content">
-      contest
+      <div class="container">
+        <div class="pic">
+          <img class="img1" src="@/assets/tiger/tiger5.jpg">
+        </div>
+        <div class="text">
+          <h2>小浪貓</h2>
+          <p>Amanda在嘉義玩的時候遇到四隻生病的小浪貓，小虎就是其中一隻，把他們醫治後暫時住在朋友的店內，本來要送出去給別人養，但找不到新主人，於是有愛心的Amanda就自己帶回家養了。</p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="text">
+          <h2>店貓</h2>
+          <p>Amanda的通訊行似乎出現老鼠了，於是Amanda把小虎接到柏昕通訊裡面嚇老鼠，剛開始小虎非常不習慣一直喵喵叫，好像還怕老鼠，最後小虎習慣了在這裏的生活於是就住在通訊行了。</p>
+        </div>
+        <div class="pic">
+          <img class="img2" src="@/assets/tiger/tiger14.jpg">
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -120,9 +138,41 @@ export default {
   .content {
     width: 100%;
     height: calc(100% - 41px);
-    background: tan;
     padding: 10px;
     box-sizing: border-box;
+    overflow: auto;
+    .container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      .pic {
+        height: 350px;
+        width: 55%;
+        overflow: hidden;
+        flex-shrink: 0;
+        img {
+          width: 100%;
+          margin-top: -35%;
+          vertical-align: middle;
+        }
+        .img2 {
+          margin-top: 0;
+        }
+      }
+      .text {
+        width: 55%;
+        flex-shrink: 0;
+        padding:50px 30px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+        background: #7dc8e1cf;
+        color: white;
+      }
+    }
+    .container > :first-child {
+      margin-right: -10%;
+    }
   }
 }
 @media only screen and (max-width: 768px) {
