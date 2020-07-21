@@ -86,9 +86,11 @@
         </a>
       </el-tooltip>
       <el-tooltip class="tooltip" effect="dark" content="Line" placement="top" popper-class="Newtooltip">
+        <a>
         <span class="svg-container svg-line" @click="showMessage()">
           <svg-icon icon-class="line" />
         </span>
+        </a>
       </el-tooltip>
       <el-tooltip class="tooltip" effect="dark" content="Instagram" placement="top" popper-class="Newtooltip">
         <a href="https://www.instagram.com/blue850523/">
