@@ -330,6 +330,7 @@ export default {
     }
     .content {
       overflow: auto;
+      overflow-x: hidden;
       .mailList {
         width: 100%;
         border: none;

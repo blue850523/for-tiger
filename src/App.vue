@@ -59,3 +59,19 @@ export default {
   }
 }
 </style>
+
+<style lang="scss">
+#app {
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #7dc8e1;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #7dc8e133;
+}
+}
+</style>
