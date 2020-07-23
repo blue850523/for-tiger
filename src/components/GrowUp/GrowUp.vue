@@ -151,10 +151,15 @@ export default {
         width: 55%;
         overflow: hidden;
         flex-shrink: 0;
+        position: relative;
         img {
           width: 100%;
-          margin-top: -35%;
-          vertical-align: middle;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        .img1 {
+          transform: translate(0%,-22%);
         }
         .img2 {
           margin-top: 0;
@@ -184,6 +189,13 @@ export default {
       .left {
         .svg-container {
           color: white !important;
+        }
+      }
+    }
+    .content {
+      .container {
+        .text {
+          padding: 10px;
         }
       }
     }
