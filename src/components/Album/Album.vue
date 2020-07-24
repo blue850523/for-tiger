@@ -24,7 +24,7 @@
         <span class="pictureTitle">小虎個人沙龍照</span>
         <viewer :images="imagesNum" class="viewer">
         <!-- imagesNum 一定要一個陣列，不然會報錯 -->
-          <li class="picture" v-for="(it,index) in imagesNum" :key="it">
+          <li class="picture" v-for="(it,index) in imagesNum" :key="it" v-cloak>
             <img :src="require(`@/assets/tiger/tiger${index+1}.jpg`)">
           </li>
         </viewer>

@@ -24,8 +24,8 @@
       <div class="FileMenu">
         <div
           class="FileBox"
-          v-for="(it,index) in fileData"
-          :key="index"
+          v-for="(it) in fileData"
+          :key="it.pathName"
           @click="fileClick(it.pathName)"
         >
           <File
@@ -37,7 +37,7 @@
       </div>
       <div class="FileBoard">
         <transition name="FileBoardFade" mode="out-in">
-          <router-view @zoomEvent="fileBoardZoomCSS(...arguments)"/>
+          <router-view />
         </transition>
       </div>
       <transition name="FileBoardFade" mode="out-in">
@@ -119,23 +119,19 @@ export default {
         {
           svgName: 'mail',
           fileName: 'Mail',
-          pathName: 'Mail',
-          isOpened: false
+          pathName: 'Mail'
         },
         {
           svgName: 'picFolder',
           fileName: 'Album',
-          pathName: 'Album',
-          isOpened: false
+          pathName: 'Album'
         },
         {
           svgName: 'textFile',
           fileName: 'Grow up',
-          pathName: 'GrowUp',
-          isOpened: false
+          pathName: 'GrowUp'
         }
       ],
-      isfileBoardZoom: false,
       infoBlockOpened: false
     }
   },
@@ -180,10 +176,6 @@ export default {
     },
     fileClick (pathName) {
       this.$router.push("/" + pathName);
-    },
-    fileBoardZoomCSS (isZoom) {
-      this.isfileBoardZoom = isZoom;
-      return this.isfileBoardZoom;
     },
     infoClick () {
       this.isOpenLogoMenu = false;
@@ -502,7 +494,7 @@ export default {
       position: fixed;
       background: white;
       height: 40px;
-      padding: 3px 3px 8px;
+      padding: 8px 3px 8px;
     }
   }
 }
